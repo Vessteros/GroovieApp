@@ -25,8 +25,15 @@ android {
 dependencies {
     implementation "org.jetbrains.anko:anko:$anko_version"
 
+    //RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //из-за Anko
