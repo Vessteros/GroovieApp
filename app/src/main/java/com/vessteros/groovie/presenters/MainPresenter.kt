@@ -2,9 +2,4 @@ package com.vessteros.groovie.presenters
 
 import android.support.v7.app.AppCompatActivity
 
-class MainPresenter(val view: AppCompatActivity): BasePresenter {
-
-    override fun run() {
-
-    }
-}
+class MainPresenter(val view: AppCompatActivity): BasePresenter
