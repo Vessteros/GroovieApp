@@ -1,11 +1,11 @@
-package com.vessteros.groovie
+package com.vessteros.groovie.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.vessteros.groovie.R
 import com.vessteros.groovie.presenters.BasePresenter
 import com.vessteros.groovie.presenters.MainPresenter
-import com.vessteros.groovie.views.LoginActivity
 
 class MainActivity : AppCompatActivity() {
     // на будущее
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         val view = this
 
-        val intent = Intent(view, LoginActivity::class.java)
+        val intent = Intent(view, LRActivity::class.java)
         startActivity(intent)
     }
 }
