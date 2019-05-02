@@ -12,19 +12,29 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginPresenter(private val view: AppCompatActivity) {
+
     fun loginAction() {
-        val request = AuthRequest(view.login.toString(), view.password.toString())
+        val request = Request(
+            BaseServiceInfo,
+            AuthData(
+                view.login.toString(),
+                view.password.toString()
+            )
+        )
 
         RetrofitClient.client.authorize(request).apply {
-            enqueue(object : Callback<Resp<AuthResponse>> {
+            enqueue(object : Callback<Resp<AuthResponse, BaseProblem>> {
 
                 @SuppressLint("SetTextI18n")
-                override fun onResponse(call: Call<Resp<AuthResponse>>, response: Response<Resp<AuthResponse>>) {
+                override fun onResponse(
+                    call: Call<Resp<AuthResponse, BaseProblem>>,
+                    response: Response<Resp<AuthResponse, BaseProblem>>
+                ) {
                     view.textView.text = response.body().toString()
                 }
 
                 @SuppressLint("SetTextI18n")
-                override fun onFailure(call: Call<Resp<AuthResponse>>, t: Throwable) {
+                override fun onFailure(call: Call<Resp<AuthResponse, BaseProblem>>, t: Throwable) {
                     view.textView.text = "Fail: ${t.message}"
                 }
             })

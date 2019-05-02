@@ -14,11 +14,11 @@ interface ApiRequestMethods {
      */
     @POST("auth")
     fun authorize(
-        @Body request: AuthRequest
-    ) : Call<Response<AuthResponse>>
+        @Body data: Request<BaseServiceInfo, AuthData>
+    ) : Call<Response<AuthResponse, BaseProblem>>
 
     @POST("register")
     fun register(
-        @Body request: RegisterRequest
-    ) : Call<Response<AuthResponse>>
+        @Body data: RegisterData
+    ) : Call<Response<AuthResponse, BaseProblem>>
 }

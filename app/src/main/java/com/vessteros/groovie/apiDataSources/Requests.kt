@@ -1,7 +1,21 @@
 package com.vessteros.groovie.apiDataSources
 
 class Requests {
-    data class AuthRequest(val login: String, val password: String)
+    data class Request<S, D>(val version: S?, val data: D)
 
-    data class RegisterRequest(val login: String, val password: String, val rePass: String)
+    /******************************* ServicesInfo **************************************/
+
+    object BaseServiceInfo {
+        const val version: Int = 1
+    }
+
+    /******************************* ServicesInfo **************************************/
+
+    /******************************* RequestData ***************************************/
+
+    data class AuthData(val login: String, val password: String)
+
+    data class RegisterData(val login: String, val password: String, val rePass: String)
+
+    /******************************* RequestData ***************************************/
 }
