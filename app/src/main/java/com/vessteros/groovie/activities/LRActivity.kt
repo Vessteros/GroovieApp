@@ -4,10 +4,11 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.vessteros.groovie.R
+import com.vessteros.groovie.entities.issues.Issue
 import com.vessteros.groovie.presenters.LoginPresenter
 import kotlinx.android.synthetic.main.activity_lr.*
 
-class LRActivity : AppCompatActivity() {
+class LRActivity : AppCompatActivity(), IRenderActivity {
 
     /*************************** LifeCycle ***************************/
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +43,10 @@ class LRActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun <I : Issue<I>> issue(issue: I) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     /************************* CustomMethods *************************/

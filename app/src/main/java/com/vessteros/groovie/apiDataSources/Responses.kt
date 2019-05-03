@@ -5,15 +5,15 @@ class Responses {
 
     /******************************** Successes ***************************************/
 
-    data class AuthResponse(val id: Int, val token: String)
+    data class AuthResponse(val id: Int?, val token: String?)
 
-    data class RegisterResponse(val id: Int, val token: String)
+    data class RegisterResponse(val id: Int?, val token: String?)
 
     /******************************** Successes ***************************************/
 
     /******************************** Failures ****************************************/
 
-    data class BaseProblem(val message: String, val line: Int, val file: String)
+    data class BaseProblem(val message: String?, val line: Int?, val file: String?)
 
     /******************************** Failures ****************************************/
 }

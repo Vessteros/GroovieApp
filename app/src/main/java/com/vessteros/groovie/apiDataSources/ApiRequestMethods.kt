@@ -2,7 +2,7 @@ package com.vessteros.groovie.apiDataSources
 
 import com.vessteros.groovie.apiDataSources.Requests.*
 import com.vessteros.groovie.apiDataSources.Responses.*
-import retrofit2.Call
+import io.reactivex.Single
 import retrofit2.http.*
 
 /**
@@ -14,11 +14,11 @@ interface ApiRequestMethods {
      */
     @POST("auth")
     fun authorize(
-        @Body data: Request<BaseServiceInfo, AuthData>
-    ) : Call<Response<AuthResponse, BaseProblem>>
+        @Body data: Request<BaseServiceData, AuthData>
+    ): Single<Response<AuthResponse, BaseProblem>>
 
     @POST("register")
     fun register(
         @Body data: RegisterData
-    ) : Call<Response<AuthResponse, BaseProblem>>
+    ): Single<Response<AuthResponse, BaseProblem>>
 }

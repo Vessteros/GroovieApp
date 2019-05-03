@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Groovie</string>
+    <string name="apiException">"There is some problem on the server, we will fix it soon"</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="loginHint">Login</string>
+
+    <string name="loginFieldEmpty">Login field can not be empty.</string>
+    <string name="passwordFieldEmpty">Password field can not be empty.</string>
 </resources>

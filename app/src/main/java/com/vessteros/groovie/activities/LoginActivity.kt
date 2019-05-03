@@ -3,10 +3,12 @@ package com.vessteros.groovie.activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.vessteros.groovie.R
+import com.vessteros.groovie.entities.issues.Issue
 import com.vessteros.groovie.presenters.LoginPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), IRenderActivity {
+
     private val presenter: LoginPresenter = LoginPresenter(this)
 
     /*************************** LifeCycle ***************************/
@@ -34,5 +36,10 @@ class LoginActivity : AppCompatActivity() {
             presenter.loginAction()
         }
     }
+
+    override fun <I : Issue<I>> issue(issue: I) {
+        issue.execute()
+    }
+
     /************************* CustomMethods *************************/
 }

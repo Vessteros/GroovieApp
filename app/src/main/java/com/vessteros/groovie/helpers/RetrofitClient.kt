@@ -1,7 +1,7 @@
 package com.vessteros.groovie.helpers
 
-import com.vessteros.groovie.apiDataSources.ApiRequestMethods
 import retrofit2.Retrofit.*
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
@@ -12,9 +12,18 @@ object RetrofitClient {
     private const val baseUrl = "http://vessteros.beget.tech/api/"
 
     /** Клиент для отправки запросов */
-    val client = Builder()
-        .baseUrl(baseUrl)
+    private val client = Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(ApiRequestMethods::class.java)!!
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+
+    fun setBaseUrl(baseUrl: String = this.baseUrl): RetrofitClient {
+        client.baseUrl(baseUrl)
+        return this
+    }
+
+    fun <T> create(jClass: Class<T>): T {
+        return client
+            .build()
+            .create(jClass)
+    }
 }

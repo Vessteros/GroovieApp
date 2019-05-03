@@ -5,9 +5,7 @@ class Requests {
 
     /******************************* ServicesInfo **************************************/
 
-    object BaseServiceInfo {
-        const val version: Int = 1
-    }
+    data class BaseServiceData(val version: Int = 1)
 
     /******************************* ServicesInfo **************************************/
 
