@@ -22,4 +22,12 @@ open class InputIssue : Issue<InputIssue> {
     object EmptyPasswordField: InputIssue() {
         override val message: Int = R.string.passwordFieldEmpty
     }
+
+    object PasswordFieldsEmpty: InputIssue() {
+        override val message: Int = R.string.passwordFieldNotEqual
+    }
+
+    object PasswordFieldsNotEqual: InputIssue() {
+        override val message: Int = R.string.passwordFieldNotEqual
+    }
 }

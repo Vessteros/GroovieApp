@@ -45,9 +45,5 @@ class LRActivity : AppCompatActivity(), IRenderActivity {
         }
     }
 
-    override fun <I : Issue<I>> issue(issue: I) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     /************************* CustomMethods *************************/
 }

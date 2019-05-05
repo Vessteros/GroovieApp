@@ -5,6 +5,11 @@
     <string name="register">Register</string>
     <string name="loginHint">Login</string>
 
+    #Issues
     <string name="loginFieldEmpty">Login field can not be empty.</string>
     <string name="passwordFieldEmpty">Password field can not be empty.</string>
+    <string name="passwordFieldsEmpty">Password fields can not be empty.</string>
+    <string name="passwordFieldNotEqual">Password fields should be equal.</string>
+
+    <string name="emptyAuthData">Specified user didn\'t found or simply doesn\'t exists.</string>
 </resources>

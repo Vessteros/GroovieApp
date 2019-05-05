@@ -17,8 +17,11 @@ interface ApiRequestMethods {
         @Body data: Request<BaseServiceData, AuthData>
     ): Single<Response<AuthResponse, BaseProblem>>
 
+    /**
+     * Регистрация пользователя в системе
+     */
     @POST("register")
     fun register(
-        @Body data: RegisterData
+        @Body data: Request<BaseServiceData, RegisterData>
     ): Single<Response<AuthResponse, BaseProblem>>
 }
