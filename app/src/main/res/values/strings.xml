@@ -12,4 +12,13 @@
     <string name="passwordFieldNotEqual">Password fields should be equal.</string>
 
     <string name="emptyAuthData">Specified user didn\'t found or simply doesn\'t exists.</string>
+
+    <string name="getAccount">Еще нет аккаунта?</string>
+
+    #Авторизация
+    <string name="loginFail">Не правильный логин или пароль</string>
+    <string name="registerFail">Неудача при регистрации</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

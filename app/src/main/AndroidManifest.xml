@@ -13,25 +13,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".app.activities.MainActivity">
+        </activity>
 
         <meta-data
                 android:name="android.security.net.config"
                 android:resource="@xml/network_security_config"/>
 
-        <activity android:name=".activities.MainActivity">
-        </activity>
-        <activity android:name=".activities.RegisterActivity">
-        </activity>
-        <activity android:name=".activities.LoginActivity">
-        </activity>
-        <activity android:name=".activities.LRActivity">
-        </activity>
-        <activity android:name=".activities.StartActivity">
+        <activity android:name=".app.activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".app.activities.LoginActivity" android:theme="@style/AppTheme.SliderActivityTheme">
         </activity>
     </application>
 
