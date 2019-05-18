@@ -8,7 +8,7 @@ import com.vessteros.groovie.app.presenters.StartPresenter
 
 class StartActivity : AppCompatActivity() {
 
-    val presenter = StartPresenter(this)
+    private val presenter = StartPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

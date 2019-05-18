@@ -10,7 +10,7 @@ class StartPresenter(private val view: StartActivity) {
     private val repository = UserRepository()
 
     fun checkActiveUser() {
-        repository.deactivateUsers()
+//        repository.deactivateUsers()
         val userList = repository.getActiveUsers()
 
         when {

@@ -5,27 +5,61 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".app.activities.MainActivity">
+        tools:context=".app.activities.MainActivity" android:persistentDrawingCache="animation"
+        android:orientation="vertical" android:background="@color/colorPrimaryDark">
 
-    <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout android:layout_width="match_parent"
+                                                  android:layout_height="0dp"
+                                                  app:layout_constraintEnd_toEndOf="parent"
+                                                  app:layout_constraintStart_toStartOf="parent"
+                                                  app:layout_constraintHorizontal_bias="0.0"
+                                                  android:id="@+id/swiper"
+                                                  app:layout_constraintTop_toTopOf="parent"
+                                                  app:layout_constraintBottom_toTopOf="@+id/menu"
+                                                  app:layout_constraintVertical_bias="1.0"
+                                                  android:background="@color/colorPrimaryDark">
+
+        <android.support.v4.view.ViewPager android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:id="@+id/pager"
+                                           android:background="@color/colorPrimaryDark"
+        >
+
+        </android.support.v4.view.ViewPager>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <android.support.constraint.ConstraintLayout
             android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/linearLayout">
-    </LinearLayout>
-    <android.support.v4.view.ViewPager android:layout_width="0dp"
-                                       android:layout_height="655dp"
-                                       app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                                       app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                                       android:id="@+id/pager" app:layout_constraintHorizontal_bias="0.0"
-                                       app:layout_constraintBottom_toBottomOf="parent"
-                                       android:layout_marginTop="8dp"
-                                       app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                                       app:layout_constraintVertical_bias="1.0">
-
-    </android.support.v4.view.ViewPager>
+            android:id="@+id/menu" android:background="@color/colorPrimaryDark"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent">
+        <Button
+                android:text="Профиль"
+                android:layout_width="136dp"
+                android:layout_height="match_parent" android:id="@+id/profile"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
+                android:background="@color/colorPrimary" android:textColor="@color/colorAccentHelper"/>
+        <Button
+                android:text="Сети"
+                android:layout_width="139dp"
+                android:layout_height="match_parent" android:id="@+id/networks"
+                app:layout_constraintStart_toEndOf="@+id/profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" android:background="@color/colorPrimary"
+                android:textColor="@color/colorAccentHelper"/>
+        <Button
+                android:text="Настройки"
+                android:layout_width="136dp"
+                android:layout_height="match_parent"
+                android:id="@+id/settings" app:layout_constraintStart_toEndOf="@+id/networks"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0" android:background="@color/colorPrimary"
+                android:textColor="@color/colorAccentHelper"/>
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

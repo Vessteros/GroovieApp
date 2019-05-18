@@ -2,6 +2,8 @@ package com.vessteros.groovie
 
 import android.app.Application
 import com.vessteros.groovie.app.services.DataIniter
+import com.vk.api.sdk.VK
+import com.vk.api.sdk.auth.VKScope
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
@@ -11,6 +13,11 @@ class Groovie: Application() {
 
         initRealm()
         dataInit()
+        vkInit()
+    }
+
+    private fun vkInit() {
+        VK.initialize(this)
     }
 
     private fun initRealm() {

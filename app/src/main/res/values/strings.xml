@@ -1,4 +1,11 @@
 <resources>
+    <integer name="com_vk_sdk_AppId">6986397</integer>
+
+    <string name="transition_user_first_name">transition:userFirstName</string>
+    <string name="transition_user_last_name">transition:userLastName</string>
+    <string name="transition_user_login">transition:userLogin</string>
+    <string name="transition_user_photo">transition:userPhoto</string>
+
     <string name="app_name">Groovie</string>
     <string name="apiException">"There is some problem on the server, we will fix it soon"</string>
     <string name="login">Login</string>
@@ -21,4 +28,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Выйти</string>
+    <string name="userInfoFull">Редактировать</string>
+    <string name="infoBlockFirts">Укажите имя и, если хотите, добавьте фотографию для вашего профиля.</string>
+    <string name="profileReadactor">Редактирование</string>
+    <string name="userprofilephoto">userProfilePhoto</string>
+    <string name="ProfileLogin">Логин</string>
+    <string name="ProfilePassword">Пароль</string>
+    <string name="infoBlockSecond">Вы можете изменить данные авторизации, если считаете, что они скомпрометированы.</string>
+    <string name="passwordHint">123@meh{()}</string>
+    <string name="infoBlockThird">Вы можете оставить отзыв, написать обращение или найти информацию по интересующим вопросам.</string>
 </resources>

@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.vessteros.groovie.R
+import com.vessteros.groovie.app.activities.MainActivity
+import com.vessteros.groovie.app.fragments.Updater
 
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment(), Updater {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,5 +22,5 @@ class SettingsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
-
+    override fun onUpdate() = (activity as MainActivity).presenter.settingsWorker.update()
 }
