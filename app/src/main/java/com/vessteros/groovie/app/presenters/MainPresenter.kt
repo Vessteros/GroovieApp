@@ -8,6 +8,9 @@ import com.vessteros.groovie.app.activities.networks.VkActivity
 import com.vessteros.groovie.app.fragments.main.NetworkUIFragment
 import com.vessteros.groovie.app.fragments.main.ProfileFragment
 import com.vessteros.groovie.app.fragments.main.SettingsFragment
+import com.vessteros.groovie.app.interceptors.main.ProfileWorkerInterceptor
+import com.vessteros.groovie.app.models.GUser
+import com.vessteros.groovie.app.models.entities.User
 import com.vessteros.groovie.app.services.db.repositories.UserRepository
 
 class MainPresenter(val view: MainActivity): BasePresenter {
@@ -22,22 +25,33 @@ class MainPresenter(val view: MainActivity): BasePresenter {
 
         override var fragment: ProfileFragment? = null
 
+        val interceptor = ProfileWorkerInterceptor(this)
+
         override fun attach(fragment: ProfileFragment) {
             this.fragment = fragment
         }
 
         fun logout() {
             userRepository.deactivateUsers()
-
             view.moveOn(Intent(view, LoginActivity::class.java))
         }
 
         override fun update() {
             Toast.makeText(view, "Profile updated", Toast.LENGTH_LONG).show()
         }
+
+        fun findUser() = interceptor.getUser()
+
+        fun onUserFound(user: User) = fragment?.setView(user)
+        fun display(message: String?) {
+            Toast.makeText(view, message, Toast.LENGTH_LONG).show()
+        }
     }
 
     inner class NetworkWorker: BasePresenter.BaseWorker<NetworkUIFragment> {
+        private val networkMap = mapOf(
+            "vk" to VkActivity::class.java
+        )
 
         override var fragment: NetworkUIFragment? = null
 
@@ -45,12 +59,7 @@ class MainPresenter(val view: MainActivity): BasePresenter {
             this.fragment = fragment
         }
 
-        fun startNetworkService(networkId: String) {
-            val intent = Intent(view, VkActivity::class.java)
-                .putExtra("networkId", networkId)
-
-            view.moveOn(intent)
-        }
+        fun startNetworkService(networkId: String) = view.moveOn(Intent(view, networkMap[networkId]))
 
         override fun update() {
             Toast.makeText(view, "NetworkList updated", Toast.LENGTH_LONG).show()

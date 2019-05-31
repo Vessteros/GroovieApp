@@ -56,12 +56,14 @@ class LoginActivity : AppCompatActivity(), IRenderActivity, LoginFragment.LoginE
     /********************************* LoginEventListener *********************************/
 
     /******************************* RegisterEventListener ********************************/
-    override fun registerAction() = presenter.registerAction(
-        RegisterCase(
-            registerFragment.login.text.toString(),
-            registerFragment.pass.text.toString(),
-            registerFragment.repass.text.toString()
+    override fun registerAction() {
+        presenter.registerAction(
+            RegisterCase(
+                registerFragment.login.text.toString(),
+                registerFragment.pass.text.toString(),
+                registerFragment.repass.text.toString()
+            )
         )
-    )
+    }
     /******************************* RegisterEventListener ********************************/
 }

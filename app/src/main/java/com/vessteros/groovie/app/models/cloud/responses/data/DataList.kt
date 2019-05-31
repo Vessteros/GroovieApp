@@ -10,4 +10,8 @@ class DataList {
         val lastName: String?,
         val secondName: String?
     ) : BaseData
+
+    data class PasswordValidationData(val valid: Boolean?) : BaseData
+
+    data class ProfileUpdateData(val updated: Any?): BaseData
 }

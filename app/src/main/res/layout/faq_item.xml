@@ -22,5 +22,5 @@
             app:layout_constraintHorizontal_bias="0.0" android:paddingLeft="10dp" android:paddingRight="10dp"
             android:paddingTop="6dp" android:textColor="@color/colorAccent" android:background="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp" android:paddingBottom="6dp"/>
+            android:layout_marginBottom="4dp" android:paddingBottom="6dp" android:elevation="10dp"/>
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             tools:context=".app.fragments.networks.NewsFragment"
+                                             android:background="@color/colorPrimary">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:paddingLeft="10dp" android:paddingTop="10dp"
+            android:paddingRight="10dp" android:paddingBottom="10dp" android:id="@+id/constraintLayout16">
+
+        <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:id="@+id/newsImage"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" android:background="@drawable/background"/>
+        <TextView
+                android:text="Название группы"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/newsTitle"
+                app:layout_constraintStart_toEndOf="@+id/newsImage" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingLeft="10dp" android:paddingTop="10dp" android:paddingRight="10dp"
+                android:paddingBottom="10dp" android:textColor="@color/colorAccentHelper" android:textSize="15sp"
+                app:layout_constraintHorizontal_bias="0.0"/>
+        <TextView
+                android:text="Время публикации"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/newsPostDate"
+                app:layout_constraintTop_toBottomOf="@+id/newsTitle"
+                app:layout_constraintStart_toEndOf="@+id/newsImage" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" android:paddingLeft="10dp" android:paddingTop="8dp"
+                android:paddingBottom="8dp" android:paddingRight="10dp" android:textColor="@color/colorAccent"
+                android:textSize="12sp"/>
+    </android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout16" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+                android:text="TextView"
+                android:layout_width="0dp"
+                android:layout_height="300dp" android:id="@+id/newsBody"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/colorAccentHelper" android:paddingLeft="24dp" android:paddingRight="24dp"
+                android:paddingTop="10dp" android:paddingBottom="10dp"/>
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

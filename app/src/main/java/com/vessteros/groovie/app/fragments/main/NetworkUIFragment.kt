@@ -18,7 +18,7 @@ class NetworkUIFragment : Fragment(), Updater {
 
     private lateinit var activity: NetworkUIEventListener
 
-    lateinit var vkbtn: ImageButton
+    private lateinit var vkbtn: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater,

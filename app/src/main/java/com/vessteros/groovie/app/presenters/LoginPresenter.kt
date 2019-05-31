@@ -12,7 +12,7 @@ import com.vessteros.groovie.app.models.cloud.requests.Requests.*
 import com.vessteros.groovie.app.models.entities.User
 import com.vessteros.groovie.app.services.db.repositories.UserRepository
 
-class LoginPresenter(private val view: LoginActivity) {
+class LoginPresenter(val view: LoginActivity): BasePresenter {
     private val repository = UserRepository()
 
     private val interceptor = LoginInterceptor(this)
@@ -78,7 +78,7 @@ class LoginPresenter(private val view: LoginActivity) {
 
     /**************************** Проверка на ошибки заполнения ***************************/
 
-    private fun searchForIssues(dataCase: LoginCase): InputIssue? = when {
+    private fun searchForIssues(dataCase: LoginCase) = when {
         dataCase.login.isNullOrEmpty() -> {
             issue = InputIssue.EmptyLoginField.apply {
                 executable = {
@@ -90,8 +90,6 @@ class LoginPresenter(private val view: LoginActivity) {
                     }
                 }
             }
-
-            issue
         }
 
         dataCase.password.isNullOrEmpty() -> {
@@ -105,14 +103,12 @@ class LoginPresenter(private val view: LoginActivity) {
                     }
                 }
             }
-
-            issue
         }
 
-        else -> null
+        else -> {}
     }
 
-    private fun searchForIssues(dataCase: RegisterCase): InputIssue? = when {
+    private fun searchForIssues(dataCase: RegisterCase) = when {
         dataCase.login.isNullOrEmpty() -> {
             issue = InputIssue.EmptyLoginField.apply {
                 executable = {
@@ -124,8 +120,6 @@ class LoginPresenter(private val view: LoginActivity) {
                     }
                 }
             }
-
-            issue
         }
 
         dataCase.password.isNullOrEmpty() -> {
@@ -139,8 +133,6 @@ class LoginPresenter(private val view: LoginActivity) {
                     }
                 }
             }
-
-            issue
         }
 
         dataCase.repassword.isNullOrEmpty() -> {
@@ -154,11 +146,9 @@ class LoginPresenter(private val view: LoginActivity) {
                     }
                 }
             }
-
-            issue
         }
 
-        else -> null
+        else -> {}
     }
 
     /**************************** Проверка на ошибки заполнения ***************************/

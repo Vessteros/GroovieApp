@@ -6,7 +6,7 @@ import com.vessteros.groovie.app.activities.MainActivity
 import com.vessteros.groovie.app.activities.StartActivity
 import com.vessteros.groovie.app.services.db.repositories.UserRepository
 
-class StartPresenter(private val view: StartActivity) {
+class StartPresenter(private val view: StartActivity): BasePresenter {
     private val repository = UserRepository()
 
     fun checkActiveUser() {

@@ -5,7 +5,7 @@ import com.vessteros.groovie.app.models.entities.User as EUser
 import io.realm.Realm
 
 class UserRepository {
-    val realm = Realm.getDefaultInstance()!!
+    private val realm = Realm.getDefaultInstance()!!
 
     /**
      * Получить пользователя по id или null
@@ -32,6 +32,11 @@ class UserRepository {
 
         return userList
     }
+
+    fun getActiveUser() = realm
+            .where(User::class.java)
+            .equalTo("isActive", true)
+            .findFirst()
 
     /**
      * Деактивация всех пользователей

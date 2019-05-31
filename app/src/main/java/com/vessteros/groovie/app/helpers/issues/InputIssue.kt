@@ -8,9 +8,9 @@ open class InputIssue :
 
     override val message: Int = 0
 
-    override val textColor: Int = R.color.red
+    override val textColor: Int = R.color.colorWarning
 
-    val inputColor: Int = R.color.red
+    val inputColor: Int = R.color.colorWarning
 
     override fun execute() {
         executable()
@@ -30,5 +30,15 @@ open class InputIssue :
 
     object PasswordFieldsNotEqual: InputIssue() {
         override val message: Int = R.string.passwordFieldNotEqual
+    }
+
+    object EmptyCurrentPasswordField: InputIssue() {
+        override val message: Int
+            get() = R.string.currentPasswordFieldEmpty
+    }
+
+    object CurrentPasswordIsIncorrect: InputIssue() {
+        override val message: Int
+            get() = R.string.currentPasswordIsIncorrect
     }
 }

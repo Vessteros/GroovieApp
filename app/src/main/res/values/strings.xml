@@ -8,15 +8,17 @@
 
     <string name="app_name">Groovie</string>
     <string name="apiException">"There is some problem on the server, we will fix it soon"</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="loginHint">Login</string>
+    <string name="login">Войти</string>
+    <string name="register">Зарегестрироваться</string>
+    <string name="loginHint">Логин</string>
 
     #Issues
     <string name="loginFieldEmpty">Login field can not be empty.</string>
     <string name="passwordFieldEmpty">Password field can not be empty.</string>
     <string name="passwordFieldsEmpty">Password fields can not be empty.</string>
     <string name="passwordFieldNotEqual">Password fields should be equal.</string>
+    <string name="currentPasswordFieldEmpty">Не указан текущий пароль.</string>
+    <string name="currentPasswordIsIncorrect">Текущий пароль не совпадает с введенным.</string>
 
     <string name="emptyAuthData">Specified user didn\'t found or simply doesn\'t exists.</string>
 
@@ -35,7 +37,35 @@
     <string name="userprofilephoto">userProfilePhoto</string>
     <string name="ProfileLogin">Логин</string>
     <string name="ProfilePassword">Пароль</string>
-    <string name="infoBlockSecond">Вы можете изменить данные авторизации, если считаете, что они скомпрометированы.</string>
+    <string name="infoBlockSecond">Вы можете изменить данные авторизации, если считаете, что они скомпрометированы.
+    </string>
     <string name="passwordHint">123@meh{()}</string>
-    <string name="infoBlockThird">Вы можете оставить отзыв, написать обращение или найти информацию по интересующим вопросам.</string>
+    <string name="infoBlockThird">Вы можете оставить отзыв, написать обращение или найти информацию по интересующим
+        вопросам.
+    </string>
+    <string name="lPasswordHint">Пароль</string>
+    <string name="repasswordHint">Пароль еще раз</string>
+    <string name="feedback">Отзыв</string>
+    <string name="titleBackButton">Назад</string>
+    <string name="leaveFeedback">Оставить</string>
+    <string name="feedbackActivityInfo2">Обращение каждого пользователя будет прочитано и принято во внимание.
+        \n\nЕсли проблема имеет срочный характер или является багрепортом, то после принятия необходимых мер, мы
+        оповестим Вас о
+        проделанной работе (если отзыв был не анонимен).
+    </string>
+    <string name="titleHint">Укажите тему обращения</string>
+    <string name="newsBlockTitle">Новостная лента</string>
+    <string name="podrobnee">Подробнее</string>
+    <string name="obnovleniya">Обновления</string>
+    <string name="aboutUsFirstBlock">Это приложение разработано командой из одного разработчика:\n\n
+        Никитой Могиленко.
+    </string>
+    <string name="aboutUsSecondBlock">В ходе разработки велась группа, посвященная этапам и процессам, с которыми мне
+        пришлось столкнуться в ходе
+        разработки.
+    </string>
+    <string name="aboutUsThirdBlock">Если при использовании приложения возникают трудности, либо же вы нашли какую-то
+        неисправность, то прошу Вас
+        оставить обращение, которое сразу же попадет ко мне.
+    </string>
 </resources>

@@ -6,32 +6,34 @@ import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.support.v7.widget.LinearLayoutManager
-import android.text.Editable
 import android.view.View
 import android.view.Window
+import android.widget.Toast
 import com.r0adkll.slidr.Slidr
 import com.vessteros.groovie.R
 import com.vessteros.groovie.app.adapters.ProfileRecycleViewAdapter
+import com.vessteros.groovie.app.models.cases.UpdaterCase
+import com.vessteros.groovie.app.models.entities.User
+import com.vessteros.groovie.app.presenters.UserProfilePresenter
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import kotlinx.android.synthetic.main.activity_user_profile.userFirstName
 import kotlinx.android.synthetic.main.activity_user_profile.userLastName
 import kotlinx.android.synthetic.main.activity_user_profile.userLogin
-import kotlinx.android.synthetic.main.fragment_profile.*
+import org.jetbrains.anko.forEachChild
 
-class UserProfileActivity : AppCompatActivity() {
+class UserProfileActivity : AppCompatActivity(), IRenderActivity {
+    val presenter = UserProfilePresenter(this)
+
     private val iconList = arrayListOf(
-        R.drawable.faq,
         R.drawable.faq,
         R.drawable.faq,
         R.drawable.faq
     )
 
     private val titleList = arrayListOf(
-        "Написать обращение",
-        "Оставить отзыв",
+        "Написать отзыв",
         "О Нас",
         "FAQ"
-
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,17 +45,23 @@ class UserProfileActivity : AppCompatActivity() {
 
         userFirstName.hint = intent.getStringExtra("userFirstName")
         userLastName.hint = intent.getStringExtra("userLastName")
-
         userLogin.hint = intent.getStringExtra("userLogin")
 
-        Slidr.attach(this)
-
         init()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        faqList.forEachChild {
+            it.isClickable = true
+        }
     }
 
     private fun init() {
         setOnClickListeners()
         initRecycleView()
+        presenter.getUser()
     }
 
     private fun initRecycleView() {
@@ -63,11 +71,25 @@ class UserProfileActivity : AppCompatActivity() {
 
     private fun setOnClickListeners() {
         save.setOnClickListener {
-            returnToMain()
+            saveChanges()
         }
     }
 
-    private fun returnToMain() {
+    fun moveOn(intent: Intent) = startActivity(intent)
+
+    private fun saveChanges() {
+        presenter.saveChanges(
+            UpdaterCase(
+                userFirstName.text.toString(),
+                userLastName.text.toString(),
+                userLogin.text.toString(),
+                userCurrentPassword.text.toString(),
+                userNewPassword.text.toString()
+            )
+        )
+    }
+
+    fun returnToMain() {
         val intent = Intent(this, MainActivity::class.java)
 
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -79,5 +101,11 @@ class UserProfileActivity : AppCompatActivity() {
         ).toBundle()
 
         startActivity(intent, options)
+    }
+
+    fun setViews(userInfo: User) {
+        userFirstName.hint = userInfo.name
+        userLastName.hint = userInfo.lastName
+        userLogin.hint = userInfo.login
     }
 }

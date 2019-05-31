@@ -5,6 +5,7 @@ import com.vessteros.groovie.app.helpers.mappers.LoginMapper
 import com.vessteros.groovie.app.models.cloud.requests.Requests.*
 import com.vessteros.groovie.app.presenters.LoginPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class LoginInterceptor(private val presenter: LoginPresenter) {
@@ -12,16 +13,18 @@ class LoginInterceptor(private val presenter: LoginPresenter) {
     /**
      * Получение пользователя с api Groovie
      */
-    fun getUser(request: AuthRequest) = GClient.client
-        .authorize(request)
-        .subscribeOn(Schedulers.newThread())
-        .observeOn(AndroidSchedulers.mainThread())
-        .flatMap(LoginMapper::map)
-        .subscribe({
-            presenter.logIn(it)
-        }, {
-            presenter.loginFail(it)
-        })
+    fun getUser(request: AuthRequest): Disposable {
+        return GClient.client
+            .authorize(request)
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .flatMap(LoginMapper::map)
+            .subscribe({
+                presenter.logIn(it)
+            }, {
+                presenter.loginFail(it)
+            })
+    }
 
     /**
      * Регистрация пользователя

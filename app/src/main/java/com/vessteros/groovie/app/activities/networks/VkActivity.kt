@@ -7,7 +7,6 @@ import android.widget.Toast
 import com.r0adkll.slidr.Slidr
 import com.vessteros.groovie.R
 import com.vessteros.groovie.app.activities.MainActivity
-import com.vessteros.groovie.app.fragments.networks.vk.ChatListFragment
 import com.vessteros.groovie.app.presenters.networks.VkPresenter
 import com.vk.api.sdk.VK
 import com.vk.api.sdk.auth.VKAccessToken
@@ -16,12 +15,6 @@ import com.vk.api.sdk.auth.VKAuthCallback
 
 class VkActivity : AppCompatActivity() {
     private val presenter = VkPresenter(this)
-
-    private val chatListFragment = ChatListFragment()
-
-    companion object {
-        val networkId = "vk"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +38,6 @@ class VkActivity : AppCompatActivity() {
             VK.onActivityResult(requestCode, resultCode, data, object : VKAuthCallback {
                 override fun onLogin(token: VKAccessToken) {
                     Toast.makeText(this@VkActivity, token.toString(), Toast.LENGTH_LONG).show()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.container, chatListFragment)
-//                        .addToBackStack(null)
-                        .commitAllowingStateLoss()
                 }
 
                 override fun onLoginFailed(errorCode: Int) {

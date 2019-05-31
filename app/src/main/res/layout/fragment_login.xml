@@ -4,49 +4,59 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".app.fragments.login.LoginFragment">
+                                             tools:context=".app.fragments.login.LoginFragment"
+                                             android:background="@color/colorPrimaryDark">
 
 
     <EditText
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/login" android:layout_marginTop="184dp"
+            android:id="@+id/login" android:layout_marginTop="280dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:autofillHints=""
-            app:layout_constraintHorizontal_bias="1.0"/>
+            app:layout_constraintHorizontal_bias="1.0" android:background="@color/colorPrimary"
+            android:textColor="@color/colorAccent" android:paddingLeft="10dp" android:paddingRight="20dp"
+            android:hint="@string/loginHint" android:textAlignment="viewEnd" android:paddingBottom="2dp"
+            android:textColorHint="@color/colorAccent" android:elevation="20dp" android:textSize="14sp"/>
     <EditText
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/pass"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginStart="40dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/login"/>
+            app:layout_constraintTop_toBottomOf="@+id/login" android:background="@color/colorPrimary"
+            android:shadowColor="@color/colorAccent" android:paddingLeft="20dp" android:paddingRight="20dp"
+            android:textAlignment="viewStart" android:paddingBottom="2dp" android:hint="@string/lPasswordHint"
+            android:textColorHint="@color/colorAccent" android:textSize="14sp" android:textColor="@color/colorAccent"
+            android:elevation="20dp"/>
     <Button
             android:text="@string/login"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:id="@+id/lgbtn" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_height="40dp"
+            android:id="@+id/lgbtn" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="40dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp"
             app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/pass"/>
+            app:layout_constraintTop_toBottomOf="@+id/pass" android:background="@color/colorAccent"
+            android:textAllCaps="false" android:textSize="15sp" android:elevation="20dp"/>
     <Button
             android:text="@string/register"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:id="@+id/rgbtn" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_height="40dp"
+            android:id="@+id/rgbtn" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="40dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="1.0"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/lgbtn"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintTop_toBottomOf="@+id/lgbtn"
+            app:layout_constraintVertical_bias="0.0" android:background="@color/colorAccent"
+            android:textAllCaps="false" android:layout_marginTop="1dp" android:textSize="15sp"
+            android:elevation="20dp"/>
 </android.support.constraint.ConstraintLayout>
