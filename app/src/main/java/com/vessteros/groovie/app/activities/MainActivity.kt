@@ -10,11 +10,16 @@ import android.support.v4.view.ViewPager
 import android.view.View
 import android.view.Window
 import android.widget.Button
+import android.widget.Toast
 import com.vessteros.groovie.R
+import com.vessteros.groovie.app.activities.networks.VkActivity
 import com.vessteros.groovie.app.adapters.PagerAdapter
 import com.vessteros.groovie.app.fragments.main.NetworkUIFragment
 import com.vessteros.groovie.app.fragments.main.ProfileFragment
 import com.vessteros.groovie.app.presenters.MainPresenter
+import com.vk.api.sdk.VK
+import com.vk.api.sdk.auth.VKAccessToken
+import com.vk.api.sdk.auth.VKAuthCallback
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -103,6 +108,27 @@ class MainActivity : AppCompatActivity(), ProfileFragment.ProfileEventListener,
 
     fun moveOn(intent: Intent) {
         startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        data?.let {
+            VK.onActivityResult(requestCode, resultCode, data, object : VKAuthCallback {
+                override fun onLogin(token: VKAccessToken) {
+                    val context = this@MainActivity
+                    presenter.networkWorker.setNetworkAccessToken(token)
+                    moveOn(Intent(context, VkActivity::class.java))
+                }
+
+                override fun onLoginFailed(errorCode: Int) {
+                    val context = this@MainActivity
+                    Toast.makeText(context, "Ошибка авторизации", Toast.LENGTH_LONG).show()
+                    moveOn(Intent(context, MainActivity::class.java))
+                }
+
+            })
+        }
+
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     /********************************* ProfileEventListener *********************************/

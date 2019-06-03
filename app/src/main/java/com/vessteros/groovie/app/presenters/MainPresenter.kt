@@ -9,9 +9,11 @@ import com.vessteros.groovie.app.fragments.main.NetworkUIFragment
 import com.vessteros.groovie.app.fragments.main.ProfileFragment
 import com.vessteros.groovie.app.fragments.main.SettingsFragment
 import com.vessteros.groovie.app.interceptors.main.ProfileWorkerInterceptor
-import com.vessteros.groovie.app.models.GUser
 import com.vessteros.groovie.app.models.entities.User
 import com.vessteros.groovie.app.services.db.repositories.UserRepository
+import com.vk.api.sdk.VK
+import com.vk.api.sdk.auth.VKAccessToken
+import com.vk.api.sdk.auth.VKScope.*
 
 class MainPresenter(val view: MainActivity): BasePresenter {
 
@@ -59,7 +61,27 @@ class MainPresenter(val view: MainActivity): BasePresenter {
             this.fragment = fragment
         }
 
-        fun startNetworkService(networkId: String) = view.moveOn(Intent(view, networkMap[networkId]))
+        fun startNetworkService(networkId: String) = when {
+            networkId === "vk" -> VK.login(view, setOf(
+                NOTIFY,
+                PHOTOS,
+                STORIES,
+                STATUS,
+                WALL,
+                FRIENDS,
+                ADS,
+                OFFLINE,
+                NOTIFICATIONS,
+                STATS,
+                EMAIL,
+                MARKET
+            ))
+            else -> view.moveOn(Intent(view, networkMap[networkId]))
+        }
+
+        fun setNetworkAccessToken(data: VKAccessToken) {
+
+        }
 
         override fun update() {
             Toast.makeText(view, "NetworkList updated", Toast.LENGTH_LONG).show()

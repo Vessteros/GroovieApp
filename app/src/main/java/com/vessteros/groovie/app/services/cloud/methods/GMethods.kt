@@ -1,6 +1,5 @@
 package com.vessteros.groovie.app.services.cloud.methods
 
-import com.vessteros.groovie.app.models.GUser
 import com.vessteros.groovie.app.models.cloud.requests.Requests.*
 import com.vessteros.groovie.app.models.cloud.responses.Response
 import com.vessteros.groovie.app.models.cloud.responses.data.DataList.*
@@ -47,4 +46,26 @@ interface GMethods {
     fun getUser(
         @Path("id") id: Int
     ): Single<Response<AuthData>>
+
+    /**
+     * Сохранение токена авторизации
+     */
+    @POST("user/network_token/set")
+    fun setNetworkAccessToken(
+        @Body data: NetworkAccessTokenSetRequest
+    ): Single<Response<AccessTokenData>>
+
+    /**
+     * Получение токена сети по ее id
+     */
+    @POST("user/network_token/get")
+    fun getNetworkAccessToken(
+        @Body data: NetworkGetterRequest
+    ): Single<Response<AccessTokenData>>
+
+    /**
+     * Получение списка подключенных социальных сетей к мастер-аккаунту
+     */
+    @GET("user/network_list")
+    fun getConnectedNetworksList(): Single<Response<ConnectedNetworksList>>
 }

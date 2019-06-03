@@ -4,15 +4,17 @@ package com.vessteros.groovie.app.fragments.main
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 
 import com.vessteros.groovie.R
 import com.vessteros.groovie.app.activities.MainActivity
+import com.vessteros.groovie.app.adapters.ConnectedNetworksListAdapter
 import com.vessteros.groovie.app.fragments.Updater
 import com.vessteros.groovie.app.models.cloud.responses.data.DataList
 import com.vessteros.groovie.app.models.entities.User
@@ -21,6 +23,9 @@ class ProfileFragment : Fragment(), Updater {
     lateinit var v: View
 
     private lateinit var activity: ProfileEventListener
+
+    private val interceptor
+        get() = worker.interceptor
 
     private val worker
         get() = (activity as MainActivity).presenter.profileWorker
@@ -40,6 +45,9 @@ class ProfileFragment : Fragment(), Updater {
     private val userLogin: TextView
         get() = v.findViewById(R.id.userLogin)
 
+    private val connectedNetworksList: RecyclerView
+        get() = v.findViewById(R.id.connectedNetworksList)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,7 +62,18 @@ class ProfileFragment : Fragment(), Updater {
 
     private fun init() {
         setOnClickListeners()
+        interceptor.getConnectedNetworks(this)
     }
+
+    fun initRecycleView(networkList: ArrayList<DataList.ConnectedNetwork>) = connectedNetworksList.apply {
+        adapter = ConnectedNetworksListAdapter(
+            activity as MainActivity,
+            networkList
+        )
+
+        layoutManager = LinearLayoutManager(activity as MainActivity)
+    }
+
 
     private fun findUser() = worker.findUser()
 

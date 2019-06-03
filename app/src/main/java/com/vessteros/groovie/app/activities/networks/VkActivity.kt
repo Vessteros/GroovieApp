@@ -3,14 +3,14 @@ package com.vessteros.groovie.app.activities.networks
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.support.v7.widget.LinearLayoutManager
 import com.r0adkll.slidr.Slidr
 import com.vessteros.groovie.R
-import com.vessteros.groovie.app.activities.MainActivity
+import com.vessteros.groovie.app.adapters.VkAttachmentsAdapter
+import com.vessteros.groovie.app.adapters.VkNewsListAdapter
+import com.vessteros.groovie.app.models.cloud.responses.data.VkNewsFeedList
 import com.vessteros.groovie.app.presenters.networks.VkPresenter
-import com.vk.api.sdk.VK
-import com.vk.api.sdk.auth.VKAccessToken
-import com.vk.api.sdk.auth.VKAuthCallback
+import kotlinx.android.synthetic.main.activity_vk.*
 
 
 class VkActivity : AppCompatActivity() {
@@ -25,32 +25,13 @@ class VkActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        when {
-            presenter.findAuth() -> {}
-            else -> presenter.auth()
-        }
+        presenter.getContent()
+    }
+
+    fun onContentApplied(content: VkNewsFeedList.Response) {
+        newsList.adapter = VkNewsListAdapter(content, this)
+        newsList.layoutManager = LinearLayoutManager(this)
     }
 
     fun moveOn(intent: Intent) = startActivity(intent)
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        data?.let {
-            VK.onActivityResult(requestCode, resultCode, data, object : VKAuthCallback {
-                override fun onLogin(token: VKAccessToken) {
-                    Toast.makeText(this@VkActivity, token.toString(), Toast.LENGTH_LONG).show()
-                }
-
-                override fun onLoginFailed(errorCode: Int) {
-                    val context = this@VkActivity
-
-                    Toast.makeText(context, "Ошибка авторизации", Toast.LENGTH_LONG).show()
-
-                    moveOn(Intent(context, MainActivity::class.java))
-                }
-
-            })
-        }
-
-        super.onActivityResult(requestCode, resultCode, data)
-    }
 }

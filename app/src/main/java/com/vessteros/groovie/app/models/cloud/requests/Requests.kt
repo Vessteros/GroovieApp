@@ -13,4 +13,15 @@ class Requests {
         val currentPassword: String?,
         val newPassword: String?
     )
+
+    data class NetworkAccessTokenSetRequest(
+        val api_user_id: Int,
+        val network_id: String,
+        val access_token: String,
+        val expire_at: String
+    )
+
+    data class NetworkGetterRequest(
+        val network_id: String
+    )
 }

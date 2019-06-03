@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content">
+
+    <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp" app:srcCompat="@drawable/background"
+            android:id="@+id/connectedNetworkIcon" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+            android:text="Никита Могиленко"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:id="@+id/connectedNetworkTitle"
+            app:layout_constraintStart_toEndOf="@+id/connectedNetworkIcon" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:paddingStart="10dp" android:paddingEnd="10dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp" android:textColor="@color/colorAccentHelper"/>
+    <TextView
+            android:text="Подключен"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/connectedNetworkStatus"
+            app:layout_constraintTop_toBottomOf="@+id/connectedNetworkTitle"
+            app:layout_constraintStart_toEndOf="@+id/connectedNetworkIcon" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:paddingStart="10dp" android:paddingTop="10dp"
+            android:paddingBottom="10dp" android:paddingEnd="10dp" android:textColor="@color/colorAccent"/>
+</android.support.constraint.ConstraintLayout>

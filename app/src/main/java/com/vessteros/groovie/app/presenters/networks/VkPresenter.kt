@@ -2,28 +2,18 @@ package com.vessteros.groovie.app.presenters.networks
 
 import com.vessteros.groovie.app.activities.networks.NetworkPresenter
 import com.vessteros.groovie.app.activities.networks.VkActivity
-import com.vk.api.sdk.VK
-import com.vk.api.sdk.auth.VKScope.*
+import com.vessteros.groovie.app.interceptors.VkInterceptor
+
 
 class VkPresenter(val view: VkActivity) : NetworkPresenter {
+    val interceptor = VkInterceptor(this)
     override fun findAuth() = false //todo: implement
 
     override fun auth() {
-        val scopes = setOf(
-            NOTIFY,
-            FRIENDS,
-            PHOTOS,
-            STORIES,
-            STATUS,
-            WALL,
-            ADS,
-            OFFLINE,
-            NOTIFICATIONS,
-            STATS,
-            EMAIL,
-            MARKET
-        )
 
-        VK.login(view, scopes)
+    }
+
+    fun getContent() {
+        interceptor.getPosts()
     }
 }
